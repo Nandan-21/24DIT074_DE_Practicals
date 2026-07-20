@@ -180,6 +180,22 @@ The solution is documented through three architectural diagrams covering the AI 
 
 ---
 
+### Diagram 1 – DFD Level 0 : AI Agent Architecture
+
+This diagram shows the high-level context — how the User interacts with the AI Agent via Chat/WhatsApp trigger, how the agent sends the company name to Google Gemini, how Gemini retrieves and analyzes data from three company databases (Petal, Blinks, RM Design Solution), and how the Memory module stores the conversation history.
+
+![DFD Level 0 – AI Agent Architecture](diagram_level0_overview.png)
+
+**Lifecycle Mapping:**
+
+| DFD Element | Lifecycle Stage |
+|-------------|----------------|
+| User providing company name via WhatsApp/Chat | Data Generation |
+| AI Agent receiving input & Memory storing history | Data Ingestion & Storage |
+| Google Gemini retrieving & analyzing company data | Transformation |
+| AI Agent returning generated summary to User | Serving |
+
+---
 ### Diagram 1 – DFD Level 1 : System Overview
 
 This diagram shows the top-level data flow across the three processing modules (Text Summary, CSV Analysis, Certification ID), the central AI Processing unit (Gemini API), and the output storage and serving layer (SQL Server → User).
@@ -195,23 +211,6 @@ This diagram shows the top-level data flow across the three processing modules (
 | 4.0 AI Processing (Gemini API) | Transformation |
 | SQL Server (Reports DB) | Storage |
 | 5.0 Save Summary Report → User | Serving |
-
----
-
-### Diagram 2 – DFD Level 0 : AI Agent Architecture
-
-This diagram shows the high-level context — how the User interacts with the AI Agent via Chat/WhatsApp trigger, how the agent sends the company name to Google Gemini, how Gemini retrieves and analyzes data from three company databases (Petal, Blinks, RM Design Solution), and how the Memory module stores the conversation history.
-
-![DFD Level 0 – AI Agent Architecture](diagram_level0_overview.png)
-
-**Lifecycle Mapping:**
-
-| DFD Element | Lifecycle Stage |
-|-------------|----------------|
-| User providing company name via WhatsApp/Chat | Data Generation |
-| AI Agent receiving input & Memory storing history | Data Ingestion & Storage |
-| Google Gemini retrieving & analyzing company data | Transformation |
-| AI Agent returning generated summary to User | Serving |
 
 ---
 
