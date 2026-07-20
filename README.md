@@ -196,7 +196,7 @@ This diagram shows the high-level context — how the User interacts with the AI
 | AI Agent returning generated summary to User | Serving |
 
 ---
-### Diagram 1 – DFD Level 1 : System Overview
+### Diagram 2 – DFD Level 1 : System Overview
 
 This diagram shows the top-level data flow across the three processing modules (Text Summary, CSV Analysis, Certification ID), the central AI Processing unit (Gemini API), and the output storage and serving layer (SQL Server → User).
 
