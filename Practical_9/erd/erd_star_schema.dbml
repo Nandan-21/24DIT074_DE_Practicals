@@ -1,0 +1,63 @@
+// ====================================================================
+// Practical 9: Kimball Star Schema ERD (dbdiagram.io syntax)
+// ====================================================================
+
+Table dim_date {
+  date_key int [pk, note: "Date in YYYYMMDD integer format"]
+  full_date date [not null]
+  day_of_month int [not null]
+  month int [not null]
+  month_name varchar(20) [not null]
+  quarter int [not null]
+  year int [not null]
+  day_of_week varchar(20) [not null]
+  is_weekend boolean [not null]
+}
+
+Table dim_customer {
+  customer_key int [pk, increment, note: "Surrogate primary key for SCD Type 2"]
+  customer_id varchar(50) [not null, note: "Source system business key"]
+  customer_name varchar(100) [not null]
+  customer_email varchar(100) [not null]
+  customer_city varchar(100) [not null]
+  customer_segment varchar(50) [not null]
+  effective_start_date date [not null]
+  effective_end_date date [note: "NULL indicates active record"]
+  is_current boolean [not null, note: "TRUE for currently active version"]
+}
+
+Table dim_product {
+  product_key int [pk, increment, note: "Surrogate primary key"]
+  product_id varchar(50) [not null, unique]
+  product_name varchar(100) [not null]
+  category varchar(50) [not null]
+  subcategory varchar(50) [not null]
+  unit_cost decimal(10,2) [not null]
+  unit_price decimal(10,2) [not null]
+}
+
+Table dim_store {
+  store_key int [pk, increment, note: "Surrogate primary key"]
+  store_id varchar(50) [not null, unique]
+  store_name varchar(100) [not null]
+  region varchar(50) [not null]
+  store_type varchar(50) [not null]
+}
+
+Table fact_sales {
+  sales_key bigint [pk, increment]
+  order_id varchar(50) [not null, note: "Degenerate dimension"]
+  line_item int [not null]
+  date_key int [ref: > dim_date.date_key]
+  customer_key int [ref: > dim_customer.customer_key]
+  product_key int [ref: > dim_product.product_key]
+  store_key int [ref: > dim_store.store_key]
+  quantity int [not null]
+  unit_price decimal(10,2) [not null]
+  discount_rate decimal(4,2) [not null]
+  gross_amount decimal(12,2) [not null]
+  discount_amount decimal(12,2) [not null]
+  net_amount decimal(12,2) [not null]
+  cost_amount decimal(12,2) [not null]
+  profit_amount decimal(12,2) [not null]
+}

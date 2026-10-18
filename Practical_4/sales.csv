@@ -1,0 +1,11 @@
+transaction_id,customer_name,amount,store_code
+1,"  Pari  ","1200"," GJ-01 "
+2,"Rahul ","850.50","GJ-02"
+3," Neha","500"," OLD-03 "
+4,"Amit  ","1500.75","GJ-01"
+5,"  Riya","2500"," OLD-04"
+6,"Karan ","750.25","GJ-02 "
+7," Meera ","1100"," GJ-01"
+8,"Dev","900.50","OLD-03"
+9,"  Jay ","1800","GJ-02"
+10,"Nisha  ","650"," OLD-04 "

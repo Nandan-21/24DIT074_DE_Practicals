@@ -1,0 +1,373 @@
+=== Query 1 (High-Cardinality Aggregation) BASELINE PLAN ===
+┌───────────────────────────┐
+│         PROJECTION        │
+│    ────────────────────   │
+│__internal_decompress_strin│
+│           g(#0)           │
+│__internal_decompress_strin│
+│           g(#1)           │
+│__internal_decompress_strin│
+│           g(#2)           │
+│             #3            │
+│             #4            │
+│             #5            │
+│                           │
+│          ~0 rows          │
+└─────────────┬─────────────┘
+┌─────────────┴─────────────┐
+│          ORDER_BY         │
+│    ────────────────────   │
+│     count_star() DESC     │
+└─────────────┬─────────────┘
+┌─────────────┴─────────────┐
+│         PROJECTION        │
+│    ────────────────────   │
+│__internal_compress_string_│
+│        uhugeint(#0)       │
+│__internal_compress_string_│
+│        ubigint(#1)        │
+│__internal_compress_string_│
+│        uhugeint(#2)       │
+│             #3            │
+│             #4            │
+│             #5            │
+│                           │
+│          ~67 rows         │
+└─────────────┬─────────────┘
+┌─────────────┴─────────────┐
+│         PROJECTION        │
+│    ────────────────────   │
+│__internal_decompress_strin│
+│           g(#0)           │
+│__internal_decompress_strin│
+│           g(#1)           │
+│__internal_decompress_strin│
+│           g(#2)           │
+│             #3            │
+│             #4            │
+│             #5            │
+│                           │
+│          ~67 rows         │
+└─────────────┬─────────────┘
+┌─────────────┴─────────────┐
+│       HASH_GROUP_BY       │
+│    ────────────────────   │
+│          Groups:          │
+│             #0            │
+│             #1            │
+│             #2            │
+│                           │
+│        Aggregates:        │
+│        count_star()       │
+│     count(DISTINCT #3)    │
+│          avg(#4)          │
+│                           │
+│          ~67 rows         │
+└─────────────┬─────────────┘
+┌─────────────┴─────────────┐
+│         PROJECTION        │
+│    ────────────────────   │
+│           region          │
+│        device_type        │
+│         event_type        │
+│          user_id          │
+│      response_time_ms     │
+│                           │
+│        ~30,000 rows       │
+└─────────────┬─────────────┘
+┌─────────────┴─────────────┐
+│         PROJECTION        │
+│    ────────────────────   │
+│             #0            │
+│__internal_compress_string_│
+│        uhugeint(#1)       │
+│__internal_compress_string_│
+│        ubigint(#2)        │
+│__internal_compress_string_│
+│        uhugeint(#3)       │
+│             #4            │
+│                           │
+│        ~30,000 rows       │
+└─────────────┬─────────────┘
+┌─────────────┴─────────────┐
+│          SEQ_SCAN         │
+│    ────────────────────   │
+│           Table:          │
+│       analytics.main      │
+│      .raw_clickstream     │
+│                           │
+│   Type: Sequential Scan   │
+│                           │
+│        Projections:       │
+│      response_time_ms     │
+│           region          │
+│        device_type        │
+│         event_type        │
+│          user_id          │
+│                           │
+│          Filters:         │
+│    response_time_ms>100   │
+│                           │
+│        ~30,000 rows       │
+└───────────────────────────┘
+
+
+=== Query 2 (Partition Pruning vs Full Scan) BASELINE PLAN ===
+┌───────────────────────────┐
+│         PROJECTION        │
+│    ────────────────────   │
+│__internal_decompress_strin│
+│           g(#0)           │
+│             #1            │
+│             #2            │
+│             #3            │
+│                           │
+│          ~0 rows          │
+└─────────────┬─────────────┘
+┌─────────────┴─────────────┐
+│          ORDER_BY         │
+│    ────────────────────   │
+│       analytics.main      │
+│.raw_clickstream.region ASC│
+│       analytics.main      │
+│      .raw_clickstream     │
+│      .event_date ASC      │
+└─────────────┬─────────────┘
+┌─────────────┴─────────────┐
+│         PROJECTION        │
+│    ────────────────────   │
+│__internal_compress_string_│
+│        uhugeint(#0)       │
+│             #1            │
+│             #2            │
+│             #3            │
+│                           │
+│         ~289 rows         │
+└─────────────┬─────────────┘
+┌─────────────┴─────────────┐
+│         PROJECTION        │
+│    ────────────────────   │
+│__internal_decompress_strin│
+│           g(#0)           │
+│             #1            │
+│             #2            │
+│             #3            │
+│                           │
+│         ~289 rows         │
+└─────────────┬─────────────┘
+┌─────────────┴─────────────┐
+│       HASH_GROUP_BY       │
+│    ────────────────────   │
+│          Groups:          │
+│             #0            │
+│             #1            │
+│                           │
+│        Aggregates:        │
+│        count_star()       │
+│          avg(#2)          │
+│                           │
+│         ~289 rows         │
+└─────────────┬─────────────┘
+┌─────────────┴─────────────┐
+│         PROJECTION        │
+│    ────────────────────   │
+│           region          │
+│         event_date        │
+│      response_time_ms     │
+│                           │
+│        ~30,000 rows       │
+└─────────────┬─────────────┘
+┌─────────────┴─────────────┐
+│         PROJECTION        │
+│    ────────────────────   │
+│             #0            │
+│__internal_compress_string_│
+│        uhugeint(#1)       │
+│             #2            │
+│                           │
+│        ~30,000 rows       │
+└─────────────┬─────────────┘
+┌─────────────┴─────────────┐
+│          SEQ_SCAN         │
+│    ────────────────────   │
+│           Table:          │
+│       analytics.main      │
+│      .raw_clickstream     │
+│                           │
+│   Type: Sequential Scan   │
+│                           │
+│        Projections:       │
+│         event_date        │
+│           region          │
+│      response_time_ms     │
+│                           │
+│          Filters:         │
+│ event_date>='2026-01-10': │
+│   :DATE AND event_date<=  │
+│     '2026-01-17'::DATE    │
+│                           │
+│        ~30,000 rows       │
+└───────────────────────────┘
+
+
+=== Query 3 (Nested Subqueries vs CTE/Window) BASELINE PLAN ===
+┌─────────────────────┐
+│        TOP_N        │
+│    ──────────────   │
+│       Top: 50       │
+│                     │
+│      Order By:      │
+│  m.response_time_ms │
+│         DESC        │
+└──────────┬──────────┘
+┌──────────┴──────────┐
+│      PROJECTION     │
+│    ──────────────   │
+│       user_id       │
+│       page_url      │
+│     device_type     │
+│   response_time_ms  │
+│   avg_page_latency  │
+│  total_user_events  │
+│                     │
+│     ~50,000 rows    │
+└──────────┬──────────┘
+┌──────────┴──────────┐
+│   LEFT_DELIM_JOIN   │
+│    ──────────────   │
+│      Join Type:     │
+│        SINGLE       │
+│                     │
+│     Conditions:     │
+│    user_id IS NOT   ├───────────────────────────────────────────────────────────────────────────────────────────────────────┬───────────────────────────────────────────────────────────────────────────────────────────┐
+│     DISTINCT FROM   │                                                                                                       │                                                                                           │
+│        user_id      │                                                                                                       │                                                                                           │
+│                     │                                                                                                       │                                                                                           │
+│                     │                                                                                                       │                                                                                           │
+│                     │                                                                                                       │                                                                                           │
+│    Delim Index: 2   │                                                                                                       │                                                                                           │
+└──────────┬──────────┘                                                                                                       │                                                                                           │
+┌──────────┴──────────┐                                                                                            ┌──────────┴──────────┐                                                                     ┌──────────┴──────────┐
+│   RIGHT_DELIM_JOIN  │                                                                                            │      HASH_JOIN      │                                                                     │    HASH_GROUP_BY    │
+│    ──────────────   │                                                                                            │    ──────────────   │                                                                     │    ──────────────   │
+│      Join Type:     │                                                                                            │      Join Type:     │                                                                     │      Groups: #3     │
+│        RIGHT        │                                                                                            │        SINGLE       │                                                                     │                     │
+│                     │                                                                                            │                     │                                                                     │                     │
+│     Conditions:     │                                                                                            │     Conditions:     │                                                                     │                     │
+│   page_url IS NOT   ├───────────┬────────────────────────────────────────────────────────────────────┐           │    user_id IS NOT   ├───────────┐                                                         │                     │
+│     DISTINCT FROM   │           │                                                                    │           │     DISTINCT FROM   │           │                                                         │                     │
+│       page_url      │           │                                                                    │           │        user_id      │           │                                                         │                     │
+│                     │           │                                                                    │           │                     │           │                                                         │                     │
+│                     │           │                                                                    │           │                     │           │                                                         │                     │
+│                     │           │                                                                    │           │                     │           │                                                         │                     │
+│    Delim Index: 1   │           │                                                                    │           │     ~50,000 rows    │           │                                                         │     ~24,082 rows    │
+└──────────┬──────────┘           │                                                                    │           └──────────┬──────────┘           │                                                         └─────────────────────┘
+┌──────────┴──────────┐┌──────────┴──────────┐                                              ┌──────────┴──────────┐┌──────────┴──────────┐┌──────────┴──────────┐
+│       SEQ_SCAN      ││      HASH_JOIN      │                                              │    HASH_GROUP_BY    ││   COLUMN_DATA_SCAN  ││      PROJECTION     │
+│    ──────────────   ││    ──────────────   │                                              │    ──────────────   ││    ──────────────   ││    ──────────────   │
+│        Table:       ││      Join Type:     │                                              │      Groups: #3     ││                     ││     CASE  WHEN (    │
+│    analytics.main   ││        RIGHT        │                                              │                     ││                     ││   (count_star() IS  │
+│   .raw_clickstream  ││                     │                                              │                     ││                     ││    NULL)) THEN (0)  │
+│                     ││     Conditions:     │                                              │                     ││                     ││   ELSE count_star() │
+│        Type:        ││   page_url IS NOT   │                                              │                     ││                     ││          END        │
+│   Sequential Scan   ││     DISTINCT FROM   │                                              │                     ││                     ││       user_id       │
+│                     ││       page_url      │                                              │                     ││                     ││                     │
+│     Projections:    ││                     │                                              │                     ││                     ││                     │
+│     device_type     ││                     ├──────────────────────────────────┐           │                     ││                     ││                     │
+│   response_time_ms  ││                     │                                  │           │                     ││                     ││                     │
+│       user_id       ││                     │                                  │           │                     ││                     ││                     │
+│       page_url      ││                     │                                  │           │                     ││                     ││                     │
+│                     ││                     │                                  │           │                     ││                     ││                     │
+│       Filters:      ││                     │                                  │           │                     ││                     ││                     │
+│ device_type='mobile'││                     │                                  │           │                     ││                     ││                     │
+│ response_time_ms>500││                     │                                  │           │                     ││                     ││                     │
+│                     ││                     │                                  │           │                     ││                     ││                     │
+│     ~50,000 rows    ││     ~50,000 rows    │                                  │           │       ~10 rows      ││     ~50,000 rows    ││     ~61,227 rows    │
+└─────────────────────┘└──────────┬──────────┘                                  │           └─────────────────────┘└─────────────────────┘└──────────┬──────────┘
+                       ┌──────────┴──────────┐                       ┌──────────┴──────────┐                                              ┌──────────┴──────────┐
+                       │      PROJECTION     │                       │      DUMMY_SCAN     │                                              │      HASH_JOIN      │
+                       │    ──────────────   │                       │                     │                                              │    ──────────────   │
+                       │avg(response_time_ms)│                       │                     │                                              │      Join Type:     │
+                       │       page_url      │                       │                     │                                              │        RIGHT        │
+                       │                     │                       │                     │                                              │                     │
+                       │                     │                       │                     │                                              │     Conditions:     ├──────────────────────────────────┐
+                       │                     │                       │                     │                                              │  #0 IS NOT DISTINCT │                                  │
+                       │                     │                       │                     │                                              │     FROM user_id    │                                  │
+                       │                     │                       │                     │                                              │                     │                                  │
+                       │     ~75,000 rows    │                       │                     │                                              │     ~61,227 rows    │                                  │
+                       └──────────┬──────────┘                       └─────────────────────┘                                              └──────────┬──────────┘                                  │
+                       ┌──────────┴──────────┐                                                                                            ┌──────────┴──────────┐                       ┌──────────┴──────────┐
+                       │    HASH_GROUP_BY    │                                                                                            │      PROJECTION     │                       │      DELIM_SCAN     │
+                       │    ──────────────   │                                                                                            │    ──────────────   │                       │    ──────────────   │
+                       │      Groups: #0     │                                                                                            │__internal_decompress│                       │    Delim Index: 2   │
+                       │                     │                                                                                            │ _integral_bigint(#0,│                       │                     │
+                       │     Aggregates:     │                                                                                            │         1000)       │                       │                     │
+                       │       avg(#1)       │                                                                                            │          #1         │                       │                     │
+                       │                     │                                                                                            │                     │                       │                     │
+                       │     ~75,000 rows    │                                                                                            │     ~61,227 rows    │                       │     ~24,082 rows    │
+                       └──────────┬──────────┘                                                                                            └──────────┬──────────┘                       └─────────────────────┘
+                       ┌──────────┴──────────┐                                                                                            ┌──────────┴──────────┐
+                       │      PROJECTION     │                                                                                            │    HASH_GROUP_BY    │
+                       │    ──────────────   │                                                                                            │    ──────────────   │
+                       │       page_url      │                                                                                            │      Groups: #0     │
+                       │   response_time_ms  │                                                                                            │                     │
+                       │                     │                                                                                            │     Aggregates:     │
+                       │                     │                                                                                            │     count_star()    │
+                       │                     │                                                                                            │                     │
+                       │    ~150,000 rows    │                                                                                            │     ~61,227 rows    │
+                       └──────────┬──────────┘                                                                                            └──────────┬──────────┘
+                       ┌──────────┴──────────┐                                                                                            ┌──────────┴──────────┐
+                       │      HASH_JOIN      │                                                                                            │      PROJECTION     │
+                       │    ──────────────   │                                                                                            │    ──────────────   │
+                       │      Join Type:     │                                                                                            │       user_id       │
+                       │        INNER        │                                                                                            │                     │
+                       │                     ├───────────┐                                                                                │                     │
+                       │     Conditions:     │           │                                                                                │                     │
+                       │ page_url = page_url │           │                                                                                │                     │
+                       │                     │           │                                                                                │                     │
+                       │    ~150,000 rows    │           │                                                                                │    ~122,454 rows    │
+                       └──────────┬──────────┘           │                                                                                └──────────┬──────────┘
+                       ┌──────────┴──────────┐┌──────────┴──────────┐                                                                     ┌──────────┴──────────┐
+                       │       SEQ_SCAN      ││      DELIM_SCAN     │                                                                     │      PROJECTION     │
+                       │    ──────────────   ││    ──────────────   │                                                                     │    ──────────────   │
+                       │        Table:       ││    Delim Index: 1   │                                                                     │__internal_compress_i│
+                       │    analytics.main   ││                     │                                                                     │ ntegral_usmallint(#0│
+                       │   .raw_clickstream  ││                     │                                                                     │       , 1000)       │
+                       │                     ││                     │                                                                     │          #1         │
+                       │        Type:        ││                     │                                                                     │                     │
+                       │   Sequential Scan   ││                     │                                                                     │                     │
+                       │                     ││                     │                                                                     │                     │
+                       │     Projections:    ││                     │                                                                     │                     │
+                       │       page_url      ││                     │                                                                     │                     │
+                       │   response_time_ms  ││                     │                                                                     │                     │
+                       │                     ││                     │                                                                     │                     │
+                       │    ~150,000 rows    ││       ~10 rows      │                                                                     │    ~122,454 rows    │
+                       └─────────────────────┘└─────────────────────┘                                                                     └──────────┬──────────┘
+                                                                                                                                          ┌──────────┴──────────┐
+                                                                                                                                          │      HASH_JOIN      │
+                                                                                                                                          │    ──────────────   │
+                                                                                                                                          │      Join Type:     │
+                                                                                                                                          │        INNER        │
+                                                                                                                                          │                     ├───────────┐
+                                                                                                                                          │     Conditions:     │           │
+                                                                                                                                          │  user_id = user_id  │           │
+                                                                                                                                          │                     │           │
+                                                                                                                                          │    ~122,454 rows    │           │
+                                                                                                                                          └──────────┬──────────┘           │
+                                                                                                                                          ┌──────────┴──────────┐┌──────────┴──────────┐
+                                                                                                                                          │       SEQ_SCAN      ││      DELIM_SCAN     │
+                                                                                                                                          │    ──────────────   ││    ──────────────   │
+                                                                                                                                          │        Table:       ││    Delim Index: 2   │
+                                                                                                                                          │    analytics.main   ││                     │
+                                                                                                                                          │   .raw_clickstream  ││                     │
+                                                                                                                                          │                     ││                     │
+                                                                                                                                          │        Type:        ││                     │
+                                                                                                                                          │   Sequential Scan   ││                     │
+                                                                                                                                          │                     ││                     │
+                                                                                                                                          │     Projections:    ││                     │
+                                                                                                                                          │       user_id       ││                     │
+                                                                                                                                          │                     ││                     │
+                                                                                                                                          │    ~150,000 rows    ││     ~24,082 rows    │
+                                                                                                                                          └─────────────────────┘└─────────────────────┘
+
+

@@ -1,0 +1,60 @@
+{
+  "policy_name": "enterprise_log_lifecycle_matrix",
+  "version": "1.0.0",
+  "description": "Multi-tier automated storage lifecycle policy matrix for operational logs",
+  "tiers": {
+    "HOT": {
+      "target_bucket": "logs-hot",
+      "max_age_days": 30,
+      "min_access_frequency_per_week": 5,
+      "compression": "none",
+      "cost_per_gb_month_usd": 0.0230,
+      "description": "Immediate access for active transactional and operational debug logs"
+    },
+    "WARM": {
+      "target_bucket": "logs-warm",
+      "min_age_days": 31,
+      "max_age_days": 90,
+      "max_access_frequency_per_week": 4,
+      "compression": "none",
+      "cost_per_gb_month_usd": 0.0125,
+      "description": "Infrequent access for compliance and monthly audit reconciliations"
+    },
+    "COLD": {
+      "target_bucket": "logs-cold",
+      "min_age_days": 91,
+      "max_age_days": 365,
+      "inactivity_threshold_days": 90,
+      "compression": "gzip",
+      "cost_per_gb_month_usd": 0.0040,
+      "description": "Deep compressed archival for long-term historical records"
+    }
+  },
+  "rules": [
+    {
+      "rule_id": "RULE_HOT_ACTIVE",
+      "condition": "age_days <= 30 or access_frequency_weekly >= 5",
+      "target_tier": "HOT"
+    },
+    {
+      "rule_id": "RULE_WARM_OCCASIONAL",
+      "condition": "age_days > 30 and age_days <= 90 and access_frequency_weekly < 5 and days_since_last_access <= 90",
+      "target_tier": "WARM"
+    },
+    {
+      "rule_id": "RULE_COLD_INACTIVE_OR_OLD",
+      "condition": "age_days > 90 or days_since_last_access > 90",
+      "target_tier": "COLD"
+    },
+    {
+      "rule_id": "RULE_EXPIRE_PURGE",
+      "condition": "age_days > 365",
+      "target_tier": "EXPIRED"
+    }
+  ],
+  "verification_policy": {
+    "require_destination_verification": true,
+    "verify_methods": ["size_match", "payload_md5"],
+    "delete_source_after_verification": true
+  }
+}

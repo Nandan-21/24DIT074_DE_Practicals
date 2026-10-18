@@ -1,0 +1,17 @@
+services:
+  minio:
+    image: cleanstart/minio:latest
+    container_name: practical6_minio
+    user: "0:0"
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin
+    volumes:
+      - minio_p6_data:/data
+    command: server /data --console-address ":9001"
+
+volumes:
+  minio_p6_data:

@@ -1,0 +1,26 @@
+[
+  {
+    "customer_id": "CUST-1001",
+    "email_hash": "12bb55d8f7cbefb47c88f7a819515c19c0cf92495b982bfa006c331ea328f395",
+    "masked_email": "m***1@enterprise-example.com",
+    "masked_name": "M*** S****",
+    "segment": "At-Risk Churn",
+    "ltv_score": "1869.78"
+  },
+  {
+    "customer_id": "CUST-1002",
+    "email_hash": "5ce467e2598cfde3343a98e97daaec89eb749a9bd831c0d1f933ee2c794b3437",
+    "masked_email": "d***2@enterprise-example.com",
+    "masked_name": "D**** J******",
+    "segment": "Dormant",
+    "ltv_score": "874.78"
+  },
+  {
+    "customer_id": "CUST-1003",
+    "email_hash": "89dd90175ad9a9ac6b9933ac721c0a81a5703f3a250eedff40cd4d8b28c062e8",
+    "masked_email": "e***3@enterprise-example.com",
+    "masked_name": "E******** S****",
+    "segment": "Growing Mid-Tier",
+    "ltv_score": "3305.30"
+  }
+]

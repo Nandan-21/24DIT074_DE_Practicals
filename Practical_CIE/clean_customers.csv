@@ -1,0 +1,6 @@
+customer_id,name,email,age
+C001,Rahul,rahul@gmail.com,21
+C002,Priya,priya@gmail.com,22
+C003,Amit,amit@gmail.com,20
+C004,Neha,,23
+C005,Rohan,rohan@gmail.com,21

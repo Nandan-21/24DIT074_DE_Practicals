@@ -1,0 +1,19 @@
+# Python Environments & Caching
+venv/
+.venv/
+*/.venv/
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Local Hadoop / Windows runtime helpers
+hadoop/
+
+# Temporary OS files
+.DS_Store
+Thumbs.db
+
+# Streaming Checkpoint Dirs (internal binary state)
+**/checkpoints/
+**/fraud_checkpoints/

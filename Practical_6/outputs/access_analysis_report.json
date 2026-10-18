@@ -1,0 +1,146 @@
+{
+  "threshold_days": 90,
+  "flagged_count": 20,
+  "flagged_objects": [
+    {
+      "object_key": "Q3_2026_api_gateway_log_0004.log",
+      "days_since_last_access": 119,
+      "age_days": 104,
+      "size_bytes": 10006,
+      "recommendation": "DEMOTE_TO_COLD"
+    },
+    {
+      "object_key": "Q1_2026_api_gateway_log_0005.log",
+      "days_since_last_access": 243,
+      "age_days": 225,
+      "size_bytes": 10805,
+      "recommendation": "DEMOTE_TO_COLD"
+    },
+    {
+      "object_key": "Q2_2026_auth_broker_log_0009.log",
+      "days_since_last_access": 95,
+      "age_days": 114,
+      "size_bytes": 11140,
+      "recommendation": "DEMOTE_TO_COLD"
+    },
+    {
+      "object_key": "Q1_2026_payment_service_log_0010.log",
+      "days_since_last_access": 157,
+      "age_days": 265,
+      "size_bytes": 3258,
+      "recommendation": "DEMOTE_TO_COLD"
+    },
+    {
+      "object_key": "Q2_2026_order_processor_log_0014.log",
+      "days_since_last_access": 119,
+      "age_days": 125,
+      "size_bytes": 5708,
+      "recommendation": "DEMOTE_TO_COLD"
+    },
+    {
+      "object_key": "Q1_2026_api_gateway_log_0015.log",
+      "days_since_last_access": 190,
+      "age_days": 279,
+      "size_bytes": 7317,
+      "recommendation": "DEMOTE_TO_COLD"
+    },
+    {
+      "object_key": "Q2_2026_api_gateway_log_0019.log",
+      "days_since_last_access": 112,
+      "age_days": 129,
+      "size_bytes": 5966,
+      "recommendation": "DEMOTE_TO_COLD"
+    },
+    {
+      "object_key": "Q1_2026_api_gateway_log_0020.log",
+      "days_since_last_access": 143,
+      "age_days": 250,
+      "size_bytes": 8210,
+      "recommendation": "DEMOTE_TO_COLD"
+    },
+    {
+      "object_key": "Q2_2026_order_processor_log_0024.log",
+      "days_since_last_access": 99,
+      "age_days": 157,
+      "size_bytes": 8393,
+      "recommendation": "DEMOTE_TO_COLD"
+    },
+    {
+      "object_key": "Q4_2025_payment_service_log_0025.log",
+      "days_since_last_access": 114,
+      "age_days": 302,
+      "size_bytes": 10015,
+      "recommendation": "DEMOTE_TO_COLD"
+    },
+    {
+      "object_key": "Q2_2026_api_gateway_log_0029.log",
+      "days_since_last_access": 117,
+      "age_days": 164,
+      "size_bytes": 7766,
+      "recommendation": "DEMOTE_TO_COLD"
+    },
+    {
+      "object_key": "Q1_2026_api_gateway_log_0030.log",
+      "days_since_last_access": 163,
+      "age_days": 232,
+      "size_bytes": 2366,
+      "recommendation": "DEMOTE_TO_COLD"
+    },
+    {
+      "object_key": "Q3_2026_auth_broker_log_0034.log",
+      "days_since_last_access": 141,
+      "age_days": 106,
+      "size_bytes": 9564,
+      "recommendation": "DEMOTE_TO_COLD"
+    },
+    {
+      "object_key": "Q1_2026_api_gateway_log_0035.log",
+      "days_since_last_access": 214,
+      "age_days": 264,
+      "size_bytes": 4386,
+      "recommendation": "DEMOTE_TO_COLD"
+    },
+    {
+      "object_key": "Q2_2026_auth_broker_log_0039.log",
+      "days_since_last_access": 113,
+      "age_days": 135,
+      "size_bytes": 4836,
+      "recommendation": "DEMOTE_TO_COLD"
+    },
+    {
+      "object_key": "Q1_2026_order_processor_log_0040.log",
+      "days_since_last_access": 216,
+      "age_days": 218,
+      "size_bytes": 9674,
+      "recommendation": "DEMOTE_TO_COLD"
+    },
+    {
+      "object_key": "Q3_2026_order_processor_log_0044.log",
+      "days_since_last_access": 101,
+      "age_days": 108,
+      "size_bytes": 9780,
+      "recommendation": "DEMOTE_TO_COLD"
+    },
+    {
+      "object_key": "Q4_2025_api_gateway_log_0045.log",
+      "days_since_last_access": 131,
+      "age_days": 303,
+      "size_bytes": 7649,
+      "recommendation": "DEMOTE_TO_COLD"
+    },
+    {
+      "object_key": "Q2_2026_order_processor_log_0049.log",
+      "days_since_last_access": 131,
+      "age_days": 143,
+      "size_bytes": 5006,
+      "recommendation": "DEMOTE_TO_COLD"
+    },
+    {
+      "object_key": "Q4_2025_api_gateway_log_0050.log",
+      "days_since_last_access": 107,
+      "age_days": 300,
+      "size_bytes": 3491,
+      "recommendation": "DEMOTE_TO_COLD"
+    }
+  ]
+}

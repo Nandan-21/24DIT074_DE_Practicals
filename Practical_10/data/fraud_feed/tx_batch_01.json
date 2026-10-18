@@ -1,0 +1,6 @@
+{"transaction_id": "TX_01", "user_id": "USER_999", "amount": 1200.0, "transaction_timestamp": "2026-03-01 14:01:00"}
+{"transaction_id": "TX_02", "user_id": "USER_999", "amount": 1500.0, "transaction_timestamp": "2026-03-01 14:02:00"}
+{"transaction_id": "TX_03", "user_id": "USER_999", "amount": 1800.0, "transaction_timestamp": "2026-03-01 14:03:00"}
+{"transaction_id": "TX_04", "user_id": "USER_999", "amount": 950.0, "transaction_timestamp": "2026-03-01 14:04:00"}
+{"transaction_id": "TX_05", "user_id": "USER_888", "amount": 6500.0, "transaction_timestamp": "2026-03-01 14:02:30"}
+{"transaction_id": "TX_06", "user_id": "USER_111", "amount": 45.0, "transaction_timestamp": "2026-03-01 14:02:45"}

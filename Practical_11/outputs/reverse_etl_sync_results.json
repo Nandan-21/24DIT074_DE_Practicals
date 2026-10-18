@@ -1,0 +1,15 @@
+{
+  "run_1_initial_sync": {
+    "eligible_customers": 23,
+    "upserted_records": 23,
+    "skipped_unmodified": 0,
+    "failed_records": 0
+  },
+  "run_2_idempotency_check": {
+    "eligible_customers": 23,
+    "upserted_records": 0,
+    "skipped_unmodified": 23,
+    "failed_records": 0
+  },
+  "crm_profiles_count": 23
+}

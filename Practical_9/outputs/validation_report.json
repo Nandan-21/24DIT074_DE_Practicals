@@ -1,0 +1,16 @@
+{
+  "fact_star_rows": 2646,
+  "fact_snow_rows": 2646,
+  "customer_dimension": {
+    "total_surrogate_records": 16,
+    "active_current_records": 8,
+    "historical_scd2_records": 8
+  },
+  "query_performance": {
+    "star_schema_avg_ms": 2.934,
+    "snowflake_schema_avg_ms": 4.049,
+    "star_join_count": 2,
+    "snowflake_join_count": 5,
+    "difference_pct": 38.0
+  }
+}

@@ -1,0 +1,15 @@
+{"record_id": "b1_001", "device_id": "DEV-001", "event_timestamp": "2026-03-01 12:00:47", "temperature_celsius": 57.23, "vibration_hz": 25.33, "power_watts": 304.2, "arrival_category": "ON_TIME"}
+{"record_id": "b1_002", "device_id": "DEV-002", "event_timestamp": "2026-03-01 12:01:05", "temperature_celsius": 50.05, "vibration_hz": 15.96, "power_watts": 201.7, "arrival_category": "ON_TIME"}
+{"record_id": "b1_003", "device_id": "DEV-003", "event_timestamp": "2026-03-01 12:02:46", "temperature_celsius": 50.88, "vibration_hz": 27.1, "power_watts": 231.9, "arrival_category": "ON_TIME"}
+{"record_id": "b1_004", "device_id": "DEV-004", "event_timestamp": "2026-03-01 12:03:14", "temperature_celsius": 50.46, "vibration_hz": 25.05, "power_watts": 261.7, "arrival_category": "ON_TIME"}
+{"record_id": "b1_005", "device_id": "DEV-005", "event_timestamp": "2026-03-01 12:04:34", "temperature_celsius": 54.35, "vibration_hz": 18.89, "power_watts": 373.0, "arrival_category": "ON_TIME"}
+{"record_id": "b1_006", "device_id": "DEV-001", "event_timestamp": "2026-03-01 12:05:25", "temperature_celsius": 55.18, "vibration_hz": 25.88, "power_watts": 225.5, "arrival_category": "ON_TIME"}
+{"record_id": "b1_007", "device_id": "DEV-002", "event_timestamp": "2026-03-01 12:06:47", "temperature_celsius": 55.73, "vibration_hz": 16.83, "power_watts": 282.6, "arrival_category": "ON_TIME"}
+{"record_id": "b1_008", "device_id": "DEV-003", "event_timestamp": "2026-03-01 12:07:08", "temperature_celsius": 63.92, "vibration_hz": 23.81, "power_watts": 230.2, "arrival_category": "ON_TIME"}
+{"record_id": "b1_009", "device_id": "DEV-004", "event_timestamp": "2026-03-01 12:08:16", "temperature_celsius": 70.87, "vibration_hz": 20.8, "power_watts": 337.3, "arrival_category": "ON_TIME"}
+{"record_id": "b1_010", "device_id": "DEV-005", "event_timestamp": "2026-03-01 12:09:28", "temperature_celsius": 71.42, "vibration_hz": 23.45, "power_watts": 344.0, "arrival_category": "ON_TIME"}
+{"record_id": "b1_011", "device_id": "DEV-001", "event_timestamp": "2026-03-01 12:00:22", "temperature_celsius": 62.64, "vibration_hz": 29.7, "power_watts": 393.3, "arrival_category": "ON_TIME"}
+{"record_id": "b1_012", "device_id": "DEV-002", "event_timestamp": "2026-03-01 12:01:43", "temperature_celsius": 51.68, "vibration_hz": 16.7, "power_watts": 383.7, "arrival_category": "ON_TIME"}
+{"record_id": "b1_013", "device_id": "DEV-003", "event_timestamp": "2026-03-01 12:02:43", "temperature_celsius": 71.87, "vibration_hz": 24.2, "power_watts": 218.8, "arrival_category": "ON_TIME"}
+{"record_id": "b1_014", "device_id": "DEV-004", "event_timestamp": "2026-03-01 12:03:11", "temperature_celsius": 62.56, "vibration_hz": 11.57, "power_watts": 296.9, "arrival_category": "ON_TIME"}
+{"record_id": "b1_015", "device_id": "DEV-005", "event_timestamp": "2026-03-01 12:04:39", "temperature_celsius": 50.75, "vibration_hz": 28.79, "power_watts": 327.5, "arrival_category": "ON_TIME"}

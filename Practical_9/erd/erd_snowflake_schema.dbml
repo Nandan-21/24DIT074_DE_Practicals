@@ -1,0 +1,52 @@
+// ====================================================================
+// Practical 9: Snowflake Schema ERD (dbdiagram.io syntax)
+// ====================================================================
+
+Table dim_category_snow {
+  category_id int [pk, increment]
+  category_name varchar(50) [not null, unique]
+}
+
+Table dim_subcategory_snow {
+  subcategory_id int [pk, increment]
+  category_id int [ref: > dim_category_snow.category_id]
+  subcategory_name varchar(50) [not null, unique]
+}
+
+Table dim_product_snow {
+  product_key int [pk, increment]
+  product_id varchar(50) [not null, unique]
+  product_name varchar(100) [not null]
+  subcategory_id int [ref: > dim_subcategory_snow.subcategory_id]
+  unit_cost decimal(10,2) [not null]
+  unit_price decimal(10,2) [not null]
+}
+
+Table dim_region_snow {
+  region_id int [pk, increment]
+  region_name varchar(50) [not null, unique]
+}
+
+Table dim_store_snow {
+  store_key int [pk, increment]
+  store_id varchar(50) [not null, unique]
+  store_name varchar(100) [not null]
+  region_id int [ref: > dim_region_snow.region_id]
+  store_type varchar(50) [not null]
+}
+
+Table fact_sales_snow {
+  sales_key bigint [pk, increment]
+  order_id varchar(50) [not null]
+  line_item int [not null]
+  date_key int [not null]
+  customer_key int [not null]
+  product_key int [ref: > dim_product_snow.product_key]
+  store_key int [ref: > dim_store_snow.store_key]
+  quantity int [not null]
+  gross_amount decimal(12,2) [not null]
+  discount_amount decimal(12,2) [not null]
+  net_amount decimal(12,2) [not null]
+  cost_amount decimal(12,2) [not null]
+  profit_amount decimal(12,2) [not null]
+}

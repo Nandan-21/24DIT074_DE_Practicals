@@ -1,0 +1,791 @@
+{
+  "summary": {
+    "HOT": 20,
+    "WARM": 10,
+    "COLD": 20,
+    "EXPIRED": 0
+  },
+  "cost_analysis": {
+    "total_objects": 50,
+    "total_size_bytes": 314812,
+    "total_size_gb": 0.000293,
+    "tier_breakdown": {
+      "HOT": {
+        "bytes": 120751,
+        "gb": 0.000112,
+        "monthly_cost_usd": 3e-06
+      },
+      "WARM": {
+        "bytes": 48725,
+        "gb": 4.5e-05,
+        "monthly_cost_usd": 1e-06
+      },
+      "COLD": {
+        "bytes": 12480,
+        "gb": 1.2e-05,
+        "monthly_cost_usd": 0.0
+      }
+    },
+    "baseline_all_hot_cost_usd": 7e-06,
+    "optimized_tiered_cost_usd": 3e-06,
+    "monthly_savings_usd": 4e-06,
+    "savings_percentage": 52.54,
+    "rates_used_per_gb_month": {
+      "HOT": 0.023,
+      "WARM": 0.0125,
+      "COLD": 0.004
+    }
+  },
+  "objects": [
+    {
+      "object_key": "Q4_2026_payment_service_log_0001.log",
+      "current_tier": "HOT",
+      "target_tier": "HOT",
+      "age_days": 11,
+      "days_since_last_access": 0,
+      "size_bytes": 5592,
+      "transition_details": null
+    },
+    {
+      "object_key": "Q3_2026_api_gateway_log_0002.log",
+      "current_tier": "HOT",
+      "target_tier": "HOT",
+      "age_days": 19,
+      "days_since_last_access": 5,
+      "size_bytes": 3824,
+      "transition_details": null
+    },
+    {
+      "object_key": "Q3_2026_payment_service_log_0003.log",
+      "current_tier": "HOT",
+      "target_tier": "WARM",
+      "age_days": 36,
+      "days_since_last_access": 45,
+      "size_bytes": 2330,
+      "transition_details": {
+        "source_bucket": "logs-hot",
+        "source_key": "Q3_2026_payment_service_log_0003.log",
+        "destination_bucket": "logs-warm",
+        "destination_key": "Q3_2026_payment_service_log_0003.log",
+        "source_size": 2330,
+        "dest_size": 2330,
+        "source_md5": "35eba5d30e913be8be7b550de69aadd7",
+        "dest_md5": "35eba5d30e913be8be7b550de69aadd7",
+        "compressed": false
+      }
+    },
+    {
+      "object_key": "Q3_2026_api_gateway_log_0004.log",
+      "current_tier": "HOT",
+      "target_tier": "COLD",
+      "age_days": 104,
+      "days_since_last_access": 119,
+      "size_bytes": 10006,
+      "transition_details": {
+        "source_bucket": "logs-hot",
+        "source_key": "Q3_2026_api_gateway_log_0004.log",
+        "destination_bucket": "logs-cold",
+        "destination_key": "Q3_2026_api_gateway_log_0004.log.gz",
+        "source_size": 10006,
+        "dest_size": 804,
+        "source_md5": "e6d394c9237a99d2cf97e943017f82c7",
+        "dest_md5": "51e3c6729f51227d0bffd51498a61331",
+        "compressed": true
+      }
+    },
+    {
+      "object_key": "Q1_2026_api_gateway_log_0005.log",
+      "current_tier": "HOT",
+      "target_tier": "COLD",
+      "age_days": 225,
+      "days_since_last_access": 243,
+      "size_bytes": 10805,
+      "transition_details": {
+        "source_bucket": "logs-hot",
+        "source_key": "Q1_2026_api_gateway_log_0005.log",
+        "destination_bucket": "logs-cold",
+        "destination_key": "Q1_2026_api_gateway_log_0005.log.gz",
+        "source_size": 10805,
+        "dest_size": 851,
+        "source_md5": "24ab7fddb908c5654d1adb0136092e7a",
+        "dest_md5": "8cae7ea8e4990beeae7bd03e980b06d3",
+        "compressed": true
+      }
+    },
+    {
+      "object_key": "Q4_2026_api_gateway_log_0006.log",
+      "current_tier": "HOT",
+      "target_tier": "HOT",
+      "age_days": 3,
+      "days_since_last_access": 0,
+      "size_bytes": 10353,
+      "transition_details": null
+    },
+    {
+      "object_key": "Q3_2026_auth_broker_log_0007.log",
+      "current_tier": "HOT",
+      "target_tier": "HOT",
+      "age_days": 17,
+      "days_since_last_access": 2,
+      "size_bytes": 4278,
+      "transition_details": null
+    },
+    {
+      "object_key": "Q3_2026_order_processor_log_0008.log",
+      "current_tier": "HOT",
+      "target_tier": "WARM",
+      "age_days": 45,
+      "days_since_last_access": 45,
+      "size_bytes": 3617,
+      "transition_details": {
+        "source_bucket": "logs-hot",
+        "source_key": "Q3_2026_order_processor_log_0008.log",
+        "destination_bucket": "logs-warm",
+        "destination_key": "Q3_2026_order_processor_log_0008.log",
+        "source_size": 3617,
+        "dest_size": 3617,
+        "source_md5": "b78b546c7ed3308ee142c693087311e3",
+        "dest_md5": "b78b546c7ed3308ee142c693087311e3",
+        "compressed": false
+      }
+    },
+    {
+      "object_key": "Q2_2026_auth_broker_log_0009.log",
+      "current_tier": "HOT",
+      "target_tier": "COLD",
+      "age_days": 114,
+      "days_since_last_access": 95,
+      "size_bytes": 11140,
+      "transition_details": {
+        "source_bucket": "logs-hot",
+        "source_key": "Q2_2026_auth_broker_log_0009.log",
+        "destination_bucket": "logs-cold",
+        "destination_key": "Q2_2026_auth_broker_log_0009.log.gz",
+        "source_size": 11140,
+        "dest_size": 882,
+        "source_md5": "cdd2c9560c8ca1de0dd7fa5d287d07c7",
+        "dest_md5": "ce46aad98670755a981af7666d25e2e4",
+        "compressed": true
+      }
+    },
+    {
+      "object_key": "Q1_2026_payment_service_log_0010.log",
+      "current_tier": "HOT",
+      "target_tier": "COLD",
+      "age_days": 265,
+      "days_since_last_access": 157,
+      "size_bytes": 3258,
+      "transition_details": {
+        "source_bucket": "logs-hot",
+        "source_key": "Q1_2026_payment_service_log_0010.log",
+        "destination_bucket": "logs-cold",
+        "destination_key": "Q1_2026_payment_service_log_0010.log.gz",
+        "source_size": 3258,
+        "dest_size": 370,
+        "source_md5": "c334657d2672e52d365b98cb0d694d9f",
+        "dest_md5": "31c92c1215bcb3b171d8a879ec9b9789",
+        "compressed": true
+      }
+    },
+    {
+      "object_key": "Q4_2026_auth_broker_log_0011.log",
+      "current_tier": "HOT",
+      "target_tier": "HOT",
+      "age_days": 3,
+      "days_since_last_access": 2,
+      "size_bytes": 7655,
+      "transition_details": null
+    },
+    {
+      "object_key": "Q3_2026_auth_broker_log_0012.log",
+      "current_tier": "HOT",
+      "target_tier": "HOT",
+      "age_days": 22,
+      "days_since_last_access": 1,
+      "size_bytes": 4611,
+      "transition_details": null
+    },
+    {
+      "object_key": "Q3_2026_auth_broker_log_0013.log",
+      "current_tier": "HOT",
+      "target_tier": "WARM",
+      "age_days": 61,
+      "days_since_last_access": 13,
+      "size_bytes": 3149,
+      "transition_details": {
+        "source_bucket": "logs-hot",
+        "source_key": "Q3_2026_auth_broker_log_0013.log",
+        "destination_bucket": "logs-warm",
+        "destination_key": "Q3_2026_auth_broker_log_0013.log",
+        "source_size": 3149,
+        "dest_size": 3149,
+        "source_md5": "07a085dc71bd2b32749ec9944949679f",
+        "dest_md5": "07a085dc71bd2b32749ec9944949679f",
+        "compressed": false
+      }
+    },
+    {
+      "object_key": "Q2_2026_order_processor_log_0014.log",
+      "current_tier": "HOT",
+      "target_tier": "COLD",
+      "age_days": 125,
+      "days_since_last_access": 119,
+      "size_bytes": 5708,
+      "transition_details": {
+        "source_bucket": "logs-hot",
+        "source_key": "Q2_2026_order_processor_log_0014.log",
+        "destination_bucket": "logs-cold",
+        "destination_key": "Q2_2026_order_processor_log_0014.log.gz",
+        "source_size": 5708,
+        "dest_size": 520,
+        "source_md5": "fad1c9fcd7808a3c3cdd4abf8527ae3c",
+        "dest_md5": "390f67c3242d830a4a53049951e4422c",
+        "compressed": true
+      }
+    },
+    {
+      "object_key": "Q1_2026_api_gateway_log_0015.log",
+      "current_tier": "HOT",
+      "target_tier": "COLD",
+      "age_days": 279,
+      "days_since_last_access": 190,
+      "size_bytes": 7317,
+      "transition_details": {
+        "source_bucket": "logs-hot",
+        "source_key": "Q1_2026_api_gateway_log_0015.log",
+        "destination_bucket": "logs-cold",
+        "destination_key": "Q1_2026_api_gateway_log_0015.log.gz",
+        "source_size": 7317,
+        "dest_size": 638,
+        "source_md5": "eca6e40eeb07fbc40955267eaa13d9e4",
+        "dest_md5": "80aa9c81f4c803214d09dadc08a9ec9f",
+        "compressed": true
+      }
+    },
+    {
+      "object_key": "Q4_2026_payment_service_log_0016.log",
+      "current_tier": "HOT",
+      "target_tier": "HOT",
+      "age_days": 4,
+      "days_since_last_access": 0,
+      "size_bytes": 8856,
+      "transition_details": null
+    },
+    {
+      "object_key": "Q3_2026_payment_service_log_0017.log",
+      "current_tier": "HOT",
+      "target_tier": "HOT",
+      "age_days": 21,
+      "days_since_last_access": 4,
+      "size_bytes": 7698,
+      "transition_details": null
+    },
+    {
+      "object_key": "Q3_2026_order_processor_log_0018.log",
+      "current_tier": "HOT",
+      "target_tier": "WARM",
+      "age_days": 49,
+      "days_since_last_access": 16,
+      "size_bytes": 3729,
+      "transition_details": {
+        "source_bucket": "logs-hot",
+        "source_key": "Q3_2026_order_processor_log_0018.log",
+        "destination_bucket": "logs-warm",
+        "destination_key": "Q3_2026_order_processor_log_0018.log",
+        "source_size": 3729,
+        "dest_size": 3729,
+        "source_md5": "7c0259dcb1847d380ac52f77ef6ab83f",
+        "dest_md5": "7c0259dcb1847d380ac52f77ef6ab83f",
+        "compressed": false
+      }
+    },
+    {
+      "object_key": "Q2_2026_api_gateway_log_0019.log",
+      "current_tier": "HOT",
+      "target_tier": "COLD",
+      "age_days": 129,
+      "days_since_last_access": 112,
+      "size_bytes": 5966,
+      "transition_details": {
+        "source_bucket": "logs-hot",
+        "source_key": "Q2_2026_api_gateway_log_0019.log",
+        "destination_bucket": "logs-cold",
+        "destination_key": "Q2_2026_api_gateway_log_0019.log.gz",
+        "source_size": 5966,
+        "dest_size": 553,
+        "source_md5": "60dadb7df00cdcfbec1311b7ee1b9e1e",
+        "dest_md5": "44c12f7a7488b9d303d165599dc74398",
+        "compressed": true
+      }
+    },
+    {
+      "object_key": "Q1_2026_api_gateway_log_0020.log",
+      "current_tier": "HOT",
+      "target_tier": "COLD",
+      "age_days": 250,
+      "days_since_last_access": 143,
+      "size_bytes": 8210,
+      "transition_details": {
+        "source_bucket": "logs-hot",
+        "source_key": "Q1_2026_api_gateway_log_0020.log",
+        "destination_bucket": "logs-cold",
+        "destination_key": "Q1_2026_api_gateway_log_0020.log.gz",
+        "source_size": 8210,
+        "dest_size": 699,
+        "source_md5": "37b6ff39a8761f7220eb9692c95b8cfa",
+        "dest_md5": "2e363f8950937402eeeb1bdfa6df48e9",
+        "compressed": true
+      }
+    },
+    {
+      "object_key": "Q4_2026_api_gateway_log_0021.log",
+      "current_tier": "HOT",
+      "target_tier": "HOT",
+      "age_days": 14,
+      "days_since_last_access": 0,
+      "size_bytes": 5286,
+      "transition_details": null
+    },
+    {
+      "object_key": "Q3_2026_order_processor_log_0022.log",
+      "current_tier": "HOT",
+      "target_tier": "HOT",
+      "age_days": 21,
+      "days_since_last_access": 4,
+      "size_bytes": 3496,
+      "transition_details": null
+    },
+    {
+      "object_key": "Q3_2026_auth_broker_log_0023.log",
+      "current_tier": "HOT",
+      "target_tier": "WARM",
+      "age_days": 41,
+      "days_since_last_access": 29,
+      "size_bytes": 11140,
+      "transition_details": {
+        "source_bucket": "logs-hot",
+        "source_key": "Q3_2026_auth_broker_log_0023.log",
+        "destination_bucket": "logs-warm",
+        "destination_key": "Q3_2026_auth_broker_log_0023.log",
+        "source_size": 11140,
+        "dest_size": 11140,
+        "source_md5": "731da71813e43d21b684112a67341fb1",
+        "dest_md5": "731da71813e43d21b684112a67341fb1",
+        "compressed": false
+      }
+    },
+    {
+      "object_key": "Q2_2026_order_processor_log_0024.log",
+      "current_tier": "HOT",
+      "target_tier": "COLD",
+      "age_days": 157,
+      "days_since_last_access": 99,
+      "size_bytes": 8393,
+      "transition_details": {
+        "source_bucket": "logs-hot",
+        "source_key": "Q2_2026_order_processor_log_0024.log",
+        "destination_bucket": "logs-cold",
+        "destination_key": "Q2_2026_order_processor_log_0024.log.gz",
+        "source_size": 8393,
+        "dest_size": 679,
+        "source_md5": "cfc9b7a7b2a12043457458467b954249",
+        "dest_md5": "7024624a5bc4b2cefa54050118273a03",
+        "compressed": true
+      }
+    },
+    {
+      "object_key": "Q4_2025_payment_service_log_0025.log",
+      "current_tier": "HOT",
+      "target_tier": "COLD",
+      "age_days": 302,
+      "days_since_last_access": 114,
+      "size_bytes": 10015,
+      "transition_details": {
+        "source_bucket": "logs-hot",
+        "source_key": "Q4_2025_payment_service_log_0025.log",
+        "destination_bucket": "logs-cold",
+        "destination_key": "Q4_2025_payment_service_log_0025.log.gz",
+        "source_size": 10015,
+        "dest_size": 781,
+        "source_md5": "1c68794b3dd10563709c4dbba653d4a5",
+        "dest_md5": "01765d49d43359ac7ecc3bda4566a4d9",
+        "compressed": true
+      }
+    },
+    {
+      "object_key": "Q4_2026_order_processor_log_0026.log",
+      "current_tier": "HOT",
+      "target_tier": "HOT",
+      "age_days": 4,
+      "days_since_last_access": 0,
+      "size_bytes": 6524,
+      "transition_details": null
+    },
+    {
+      "object_key": "Q4_2026_auth_broker_log_0027.log",
+      "current_tier": "HOT",
+      "target_tier": "HOT",
+      "age_days": 17,
+      "days_since_last_access": 4,
+      "size_bytes": 3939,
+      "transition_details": null
+    },
+    {
+      "object_key": "Q3_2026_order_processor_log_0028.log",
+      "current_tier": "HOT",
+      "target_tier": "WARM",
+      "age_days": 79,
+      "days_since_last_access": 19,
+      "size_bytes": 10371,
+      "transition_details": {
+        "source_bucket": "logs-hot",
+        "source_key": "Q3_2026_order_processor_log_0028.log",
+        "destination_bucket": "logs-warm",
+        "destination_key": "Q3_2026_order_processor_log_0028.log",
+        "source_size": 10371,
+        "dest_size": 10371,
+        "source_md5": "9485b55bf78e2a5c6bafa1ec2db751fe",
+        "dest_md5": "9485b55bf78e2a5c6bafa1ec2db751fe",
+        "compressed": false
+      }
+    },
+    {
+      "object_key": "Q2_2026_api_gateway_log_0029.log",
+      "current_tier": "HOT",
+      "target_tier": "COLD",
+      "age_days": 164,
+      "days_since_last_access": 117,
+      "size_bytes": 7766,
+      "transition_details": {
+        "source_bucket": "logs-hot",
+        "source_key": "Q2_2026_api_gateway_log_0029.log",
+        "destination_bucket": "logs-cold",
+        "destination_key": "Q2_2026_api_gateway_log_0029.log.gz",
+        "source_size": 7766,
+        "dest_size": 674,
+        "source_md5": "b890dbab530a530753c0ad17a25365f0",
+        "dest_md5": "99f5247d783e3d46218f62faf35f9d8a",
+        "compressed": true
+      }
+    },
+    {
+      "object_key": "Q1_2026_api_gateway_log_0030.log",
+      "current_tier": "HOT",
+      "target_tier": "COLD",
+      "age_days": 232,
+      "days_since_last_access": 163,
+      "size_bytes": 2366,
+      "transition_details": {
+        "source_bucket": "logs-hot",
+        "source_key": "Q1_2026_api_gateway_log_0030.log",
+        "destination_bucket": "logs-cold",
+        "destination_key": "Q1_2026_api_gateway_log_0030.log.gz",
+        "source_size": 2366,
+        "dest_size": 319,
+        "source_md5": "4a837093be060770691e8688ce57e968",
+        "dest_md5": "b91475a3a45532cdc236175f2ac43d25",
+        "compressed": true
+      }
+    },
+    {
+      "object_key": "Q4_2026_auth_broker_log_0031.log",
+      "current_tier": "HOT",
+      "target_tier": "HOT",
+      "age_days": 13,
+      "days_since_last_access": 0,
+      "size_bytes": 4162,
+      "transition_details": null
+    },
+    {
+      "object_key": "Q3_2026_order_processor_log_0032.log",
+      "current_tier": "HOT",
+      "target_tier": "HOT",
+      "age_days": 25,
+      "days_since_last_access": 4,
+      "size_bytes": 8030,
+      "transition_details": null
+    },
+    {
+      "object_key": "Q3_2026_api_gateway_log_0033.log",
+      "current_tier": "HOT",
+      "target_tier": "WARM",
+      "age_days": 79,
+      "days_since_last_access": 36,
+      "size_bytes": 4052,
+      "transition_details": {
+        "source_bucket": "logs-hot",
+        "source_key": "Q3_2026_api_gateway_log_0033.log",
+        "destination_bucket": "logs-warm",
+        "destination_key": "Q3_2026_api_gateway_log_0033.log",
+        "source_size": 4052,
+        "dest_size": 4052,
+        "source_md5": "fe0b585ebd583f59bcc55c31551cd0e0",
+        "dest_md5": "fe0b585ebd583f59bcc55c31551cd0e0",
+        "compressed": false
+      }
+    },
+    {
+      "object_key": "Q3_2026_auth_broker_log_0034.log",
+      "current_tier": "HOT",
+      "target_tier": "COLD",
+      "age_days": 106,
+      "days_since_last_access": 141,
+      "size_bytes": 9564,
+      "transition_details": {
+        "source_bucket": "logs-hot",
+        "source_key": "Q3_2026_auth_broker_log_0034.log",
+        "destination_bucket": "logs-cold",
+        "destination_key": "Q3_2026_auth_broker_log_0034.log.gz",
+        "source_size": 9564,
+        "dest_size": 762,
+        "source_md5": "898344e155f6365d53fdb53b2f4c245e",
+        "dest_md5": "c8796ad307e96fed50df7c5f316c1cfe",
+        "compressed": true
+      }
+    },
+    {
+      "object_key": "Q1_2026_api_gateway_log_0035.log",
+      "current_tier": "HOT",
+      "target_tier": "COLD",
+      "age_days": 264,
+      "days_since_last_access": 214,
+      "size_bytes": 4386,
+      "transition_details": {
+        "source_bucket": "logs-hot",
+        "source_key": "Q1_2026_api_gateway_log_0035.log",
+        "destination_bucket": "logs-cold",
+        "destination_key": "Q1_2026_api_gateway_log_0035.log.gz",
+        "source_size": 4386,
+        "dest_size": 453,
+        "source_md5": "d76d9ee45a1e9a0dbaad6b4d508d428b",
+        "dest_md5": "89b80f71ccde5ed40122b4f5e601eb98",
+        "compressed": true
+      }
+    },
+    {
+      "object_key": "Q4_2026_api_gateway_log_0036.log",
+      "current_tier": "HOT",
+      "target_tier": "HOT",
+      "age_days": 2,
+      "days_since_last_access": 0,
+      "size_bytes": 10459,
+      "transition_details": null
+    },
+    {
+      "object_key": "Q3_2026_api_gateway_log_0037.log",
+      "current_tier": "HOT",
+      "target_tier": "HOT",
+      "age_days": 22,
+      "days_since_last_access": 3,
+      "size_bytes": 9447,
+      "transition_details": null
+    },
+    {
+      "object_key": "Q3_2026_api_gateway_log_0038.log",
+      "current_tier": "HOT",
+      "target_tier": "WARM",
+      "age_days": 74,
+      "days_since_last_access": 43,
+      "size_bytes": 4721,
+      "transition_details": {
+        "source_bucket": "logs-hot",
+        "source_key": "Q3_2026_api_gateway_log_0038.log",
+        "destination_bucket": "logs-warm",
+        "destination_key": "Q3_2026_api_gateway_log_0038.log",
+        "source_size": 4721,
+        "dest_size": 4721,
+        "source_md5": "5743866cea1a2f8c492c91dd5d29a26e",
+        "dest_md5": "5743866cea1a2f8c492c91dd5d29a26e",
+        "compressed": false
+      }
+    },
+    {
+      "object_key": "Q2_2026_auth_broker_log_0039.log",
+      "current_tier": "HOT",
+      "target_tier": "COLD",
+      "age_days": 135,
+      "days_since_last_access": 113,
+      "size_bytes": 4836,
+      "transition_details": {
+        "source_bucket": "logs-hot",
+        "source_key": "Q2_2026_auth_broker_log_0039.log",
+        "destination_bucket": "logs-cold",
+        "destination_key": "Q2_2026_auth_broker_log_0039.log.gz",
+        "source_size": 4836,
+        "dest_size": 475,
+        "source_md5": "b5902d3e3258f89c31006cd0f5dfa295",
+        "dest_md5": "1c99f34ba4f3f21bb65229f276d34ce5",
+        "compressed": true
+      }
+    },
+    {
+      "object_key": "Q1_2026_order_processor_log_0040.log",
+      "current_tier": "HOT",
+      "target_tier": "COLD",
+      "age_days": 218,
+      "days_since_last_access": 216,
+      "size_bytes": 9674,
+      "transition_details": {
+        "source_bucket": "logs-hot",
+        "source_key": "Q1_2026_order_processor_log_0040.log",
+        "destination_bucket": "logs-cold",
+        "destination_key": "Q1_2026_order_processor_log_0040.log.gz",
+        "source_size": 9674,
+        "dest_size": 752,
+        "source_md5": "05b4d484068688153da7241c07c1afce",
+        "dest_md5": "c43301b8b698e07b68c3cf8b2ea44705",
+        "compressed": true
+      }
+    },
+    {
+      "object_key": "Q4_2026_order_processor_log_0041.log",
+      "current_tier": "HOT",
+      "target_tier": "HOT",
+      "age_days": 11,
+      "days_since_last_access": 2,
+      "size_bytes": 5123,
+      "transition_details": null
+    },
+    {
+      "object_key": "Q3_2026_payment_service_log_0042.log",
+      "current_tier": "HOT",
+      "target_tier": "HOT",
+      "age_days": 28,
+      "days_since_last_access": 3,
+      "size_bytes": 2564,
+      "transition_details": null
+    },
+    {
+      "object_key": "Q3_2026_api_gateway_log_0043.log",
+      "current_tier": "HOT",
+      "target_tier": "WARM",
+      "age_days": 37,
+      "days_since_last_access": 16,
+      "size_bytes": 2701,
+      "transition_details": {
+        "source_bucket": "logs-hot",
+        "source_key": "Q3_2026_api_gateway_log_0043.log",
+        "destination_bucket": "logs-warm",
+        "destination_key": "Q3_2026_api_gateway_log_0043.log",
+        "source_size": 2701,
+        "dest_size": 2701,
+        "source_md5": "6c2d307cc4aa509bee1c4ccd7b4f36b6",
+        "dest_md5": "6c2d307cc4aa509bee1c4ccd7b4f36b6",
+        "compressed": false
+      }
+    },
+    {
+      "object_key": "Q3_2026_order_processor_log_0044.log",
+      "current_tier": "HOT",
+      "target_tier": "COLD",
+      "age_days": 108,
+      "days_since_last_access": 101,
+      "size_bytes": 9780,
+      "transition_details": {
+        "source_bucket": "logs-hot",
+        "source_key": "Q3_2026_order_processor_log_0044.log",
+        "destination_bucket": "logs-cold",
+        "destination_key": "Q3_2026_order_processor_log_0044.log.gz",
+        "source_size": 9780,
+        "dest_size": 765,
+        "source_md5": "7cc6bf4d071d8cde6dfe94de4e1a62a1",
+        "dest_md5": "a76076ed2e58215dafa5265b79e76b37",
+        "compressed": true
+      }
+    },
+    {
+      "object_key": "Q4_2025_api_gateway_log_0045.log",
+      "current_tier": "HOT",
+      "target_tier": "COLD",
+      "age_days": 303,
+      "days_since_last_access": 131,
+      "size_bytes": 7649,
+      "transition_details": {
+        "source_bucket": "logs-hot",
+        "source_key": "Q4_2025_api_gateway_log_0045.log",
+        "destination_bucket": "logs-cold",
+        "destination_key": "Q4_2025_api_gateway_log_0045.log.gz",
+        "source_size": 7649,
+        "dest_size": 643,
+        "source_md5": "2a858bebc1d45073d18d5e943c18f712",
+        "dest_md5": "2ef080ee8bf24c7db765b2533d088c43",
+        "compressed": true
+      }
+    },
+    {
+      "object_key": "Q4_2026_payment_service_log_0046.log",
+      "current_tier": "HOT",
+      "target_tier": "HOT",
+      "age_days": 15,
+      "days_since_last_access": 1,
+      "size_bytes": 5359,
+      "transition_details": null
+    },
+    {
+      "object_key": "Q3_2026_order_processor_log_0047.log",
+      "current_tier": "HOT",
+      "target_tier": "HOT",
+      "age_days": 25,
+      "days_since_last_access": 4,
+      "size_bytes": 3495,
+      "transition_details": null
+    },
+    {
+      "object_key": "Q3_2026_order_processor_log_0048.log",
+      "current_tier": "HOT",
+      "target_tier": "WARM",
+      "age_days": 75,
+      "days_since_last_access": 23,
+      "size_bytes": 2915,
+      "transition_details": {
+        "source_bucket": "logs-hot",
+        "source_key": "Q3_2026_order_processor_log_0048.log",
+        "destination_bucket": "logs-warm",
+        "destination_key": "Q3_2026_order_processor_log_0048.log",
+        "source_size": 2915,
+        "dest_size": 2915,
+        "source_md5": "9be2bb3d95799ad40fa6dc3f14dd2847",
+        "dest_md5": "9be2bb3d95799ad40fa6dc3f14dd2847",
+        "compressed": false
+      }
+    },
+    {
+      "object_key": "Q2_2026_order_processor_log_0049.log",
+      "current_tier": "HOT",
+      "target_tier": "COLD",
+      "age_days": 143,
+      "days_since_last_access": 131,
+      "size_bytes": 5006,
+      "transition_details": {
+        "source_bucket": "logs-hot",
+        "source_key": "Q2_2026_order_processor_log_0049.log",
+        "destination_bucket": "logs-cold",
+        "destination_key": "Q2_2026_order_processor_log_0049.log.gz",
+        "source_size": 5006,
+        "dest_size": 474,
+        "source_md5": "de295ebb95834ab9415a53ea2a190d77",
+        "dest_md5": "5648e1ae63916c1f18fe3ff0341c3e51",
+        "compressed": true
+      }
+    },
+    {
+      "object_key": "Q4_2025_api_gateway_log_0050.log",
+      "current_tier": "HOT",
+      "target_tier": "COLD",
+      "age_days": 300,
+      "days_since_last_access": 107,
+      "size_bytes": 3491,
+      "transition_details": {
+        "source_bucket": "logs-hot",
+        "source_key": "Q4_2025_api_gateway_log_0050.log",
+        "destination_bucket": "logs-cold",
+        "destination_key": "Q4_2025_api_gateway_log_0050.log.gz",
+        "source_size": 3491,
+        "dest_size": 386,
+        "source_md5": "b3c31f705401bf13087658d5ec6bf22b",
+        "dest_md5": "c92e6a9d547c021cfe669b05fe1e6be3",
+        "compressed": true
+      }
+    }
+  ]
+}

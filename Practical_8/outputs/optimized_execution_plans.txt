@@ -1,0 +1,236 @@
+=== Query 1 (High-Cardinality Aggregation) OPTIMIZED PLAN ===
+┌───────────────────────────┐
+│         PROJECTION        │
+│    ────────────────────   │
+│__internal_decompress_strin│
+│           g(#0)           │
+│__internal_decompress_strin│
+│           g(#1)           │
+│__internal_decompress_strin│
+│           g(#2)           │
+│             #3            │
+│             #4            │
+│             #5            │
+│                           │
+│          ~0 rows          │
+└─────────────┬─────────────┘
+┌─────────────┴─────────────┐
+│          ORDER_BY         │
+│    ────────────────────   │
+│     count_star() DESC     │
+└─────────────┬─────────────┘
+┌─────────────┴─────────────┐
+│         PROJECTION        │
+│    ────────────────────   │
+│__internal_compress_string_│
+│        uhugeint(#0)       │
+│__internal_compress_string_│
+│        ubigint(#1)        │
+│__internal_compress_string_│
+│        uhugeint(#2)       │
+│             #3            │
+│             #4            │
+│             #5            │
+│                           │
+│          ~67 rows         │
+└─────────────┬─────────────┘
+┌─────────────┴─────────────┐
+│         PROJECTION        │
+│    ────────────────────   │
+│__internal_decompress_strin│
+│           g(#0)           │
+│__internal_decompress_strin│
+│           g(#1)           │
+│__internal_decompress_strin│
+│           g(#2)           │
+│             #3            │
+│             #4            │
+│             #5            │
+│                           │
+│          ~67 rows         │
+└─────────────┬─────────────┘
+┌─────────────┴─────────────┐
+│       HASH_GROUP_BY       │
+│    ────────────────────   │
+│          Groups:          │
+│             #0            │
+│             #1            │
+│             #2            │
+│                           │
+│        Aggregates:        │
+│        count_star()       │
+│ approx_count_distinct(#3) │
+│          avg(#4)          │
+│                           │
+│          ~67 rows         │
+└─────────────┬─────────────┘
+┌─────────────┴─────────────┐
+│         PROJECTION        │
+│    ────────────────────   │
+│           region          │
+│        device_type        │
+│         event_type        │
+│          user_id          │
+│      response_time_ms     │
+│                           │
+│        ~30,000 rows       │
+└─────────────┬─────────────┘
+┌─────────────┴─────────────┐
+│         PROJECTION        │
+│    ────────────────────   │
+│             #0            │
+│__internal_compress_string_│
+│        uhugeint(#1)       │
+│__internal_compress_string_│
+│        ubigint(#2)        │
+│__internal_compress_string_│
+│        uhugeint(#3)       │
+│             #4            │
+│                           │
+│        ~30,000 rows       │
+└─────────────┬─────────────┘
+┌─────────────┴─────────────┐
+│          SEQ_SCAN         │
+│    ────────────────────   │
+│           Table:          │
+│       analytics.main      │
+│    .clickstream_indexed   │
+│                           │
+│   Type: Sequential Scan   │
+│                           │
+│        Projections:       │
+│      response_time_ms     │
+│           region          │
+│        device_type        │
+│         event_type        │
+│          user_id          │
+│                           │
+│          Filters:         │
+│    response_time_ms>100   │
+│                           │
+│        ~30,000 rows       │
+└───────────────────────────┘
+
+
+=== Query 2 (Partition Pruning vs Full Scan) OPTIMIZED PLAN ===
+┌───────────────────────────┐
+│          ORDER_BY         │
+│    ────────────────────   │
+│  read_parquet.region ASC  │
+│read_parquet.event_date ASC│
+└─────────────┬─────────────┘
+┌─────────────┴─────────────┐
+│       HASH_GROUP_BY       │
+│    ────────────────────   │
+│          Groups:          │
+│             #0            │
+│             #1            │
+│                           │
+│        Aggregates:        │
+│        count_star()       │
+│          avg(#2)          │
+│                           │
+│        ~21,143 rows       │
+└─────────────┬─────────────┘
+┌─────────────┴─────────────┐
+│         PROJECTION        │
+│    ────────────────────   │
+│           region          │
+│         event_date        │
+│      response_time_ms     │
+│                           │
+│        ~21,144 rows       │
+└─────────────┬─────────────┘
+┌─────────────┴─────────────┐
+│        READ_PARQUET       │
+│    ────────────────────   │
+│         Function:         │
+│        READ_PARQUET       │
+│                           │
+│        Projections:       │
+│         event_date        │
+│           region          │
+│      response_time_ms     │
+│                           │
+│       File Filters:       │
+│ (event_date BETWEEN '2026 │
+│ -01-10'::DATE AND '2026-01│
+│        -17'::DATE)        │
+│                           │
+│    Scanning Files: 8/60   │
+│                           │
+│        ~21,144 rows       │
+└───────────────────────────┘
+
+
+=== Query 3 (Nested Subqueries vs CTE/Window) OPTIMIZED PLAN ===
+┌───────────────────────────┐
+│           TOP_N           │
+│    ────────────────────   │
+│          Top: 50          │
+│                           │
+│         Order By:         │
+│      filtered_events      │
+│   .response_time_ms DESC  │
+└─────────────┬─────────────┘
+┌─────────────┴─────────────┐
+│         PROJECTION        │
+│    ────────────────────   │
+│          user_id          │
+│          page_url         │
+│        device_type        │
+│      response_time_ms     │
+│      avg_page_latency     │
+│     total_user_events     │
+│                           │
+│        ~50,000 rows       │
+└─────────────┬─────────────┘
+┌─────────────┴─────────────┐
+│         PROJECTION        │
+│    ────────────────────   │
+│             #0            │
+│             #1            │
+│             #2            │
+│             #3            │
+│             #4            │
+│             #5            │
+│                           │
+│        ~50,000 rows       │
+└─────────────┬─────────────┘
+┌─────────────┴─────────────┐
+│           WINDOW          │
+│    ────────────────────   │
+│        Projections:       │
+│ count() OVER (PARTITION BY│
+│          user_id)         │
+└─────────────┬─────────────┘
+┌─────────────┴─────────────┐
+│           WINDOW          │
+│    ────────────────────   │
+│        Projections:       │
+│ avg(response_time_ms) OVER│
+│   (PARTITION BY page_url) │
+└─────────────┬─────────────┘
+┌─────────────┴─────────────┐
+│          SEQ_SCAN         │
+│    ────────────────────   │
+│           Table:          │
+│       analytics.main      │
+│    .clickstream_indexed   │
+│                           │
+│   Type: Sequential Scan   │
+│                           │
+│        Projections:       │
+│        device_type        │
+│      response_time_ms     │
+│          user_id          │
+│          page_url         │
+│                           │
+│          Filters:         │
+│    device_type='mobile'   │
+│    response_time_ms>500   │
+│                           │
+│        ~50,000 rows       │
+└───────────────────────────┘
+
+

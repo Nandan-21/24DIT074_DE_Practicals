@@ -1,0 +1,74 @@
+[
+  {
+    "window_start": "2026-03-01 13:58:00",
+    "window_end": "2026-03-01 14:03:00",
+    "user_id": "USER_888",
+    "tx_count": 1,
+    "total_volume_usd": 6500.0,
+    "alert_reason": "HIGH_VOLUME_SPIKE"
+  },
+  {
+    "window_start": "2026-03-01 13:59:00",
+    "window_end": "2026-03-01 14:04:00",
+    "user_id": "USER_999",
+    "tx_count": 3,
+    "total_volume_usd": 4500.0,
+    "alert_reason": "HIGH_VOLUME_SPIKE"
+  },
+  {
+    "window_start": "2026-03-01 13:59:00",
+    "window_end": "2026-03-01 14:04:00",
+    "user_id": "USER_888",
+    "tx_count": 1,
+    "total_volume_usd": 6500.0,
+    "alert_reason": "HIGH_VOLUME_SPIKE"
+  },
+  {
+    "window_start": "2026-03-01 14:00:00",
+    "window_end": "2026-03-01 14:05:00",
+    "user_id": "USER_999",
+    "tx_count": 4,
+    "total_volume_usd": 5450.0,
+    "alert_reason": "VELOCITY_BURST"
+  },
+  {
+    "window_start": "2026-03-01 14:00:00",
+    "window_end": "2026-03-01 14:05:00",
+    "user_id": "USER_888",
+    "tx_count": 1,
+    "total_volume_usd": 6500.0,
+    "alert_reason": "HIGH_VOLUME_SPIKE"
+  },
+  {
+    "window_start": "2026-03-01 14:01:00",
+    "window_end": "2026-03-01 14:06:00",
+    "user_id": "USER_999",
+    "tx_count": 4,
+    "total_volume_usd": 5450.0,
+    "alert_reason": "VELOCITY_BURST"
+  },
+  {
+    "window_start": "2026-03-01 14:01:00",
+    "window_end": "2026-03-01 14:06:00",
+    "user_id": "USER_888",
+    "tx_count": 1,
+    "total_volume_usd": 6500.0,
+    "alert_reason": "HIGH_VOLUME_SPIKE"
+  },
+  {
+    "window_start": "2026-03-01 14:02:00",
+    "window_end": "2026-03-01 14:07:00",
+    "user_id": "USER_999",
+    "tx_count": 3,
+    "total_volume_usd": 4250.0,
+    "alert_reason": "HIGH_VOLUME_SPIKE"
+  },
+  {
+    "window_start": "2026-03-01 14:02:00",
+    "window_end": "2026-03-01 14:07:00",
+    "user_id": "USER_888",
+    "tx_count": 1,
+    "total_volume_usd": 6500.0,
+    "alert_reason": "HIGH_VOLUME_SPIKE"
+  }
+]

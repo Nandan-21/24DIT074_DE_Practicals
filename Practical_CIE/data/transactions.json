@@ -1,0 +1,32 @@
+[
+    {
+        "transaction_id": "T001",
+        "customer_id": "C001",
+        "amount": 500,
+        "timestamp": "2026-08-24 14:00:00"
+    },
+    {
+        "transaction_id": "T002",
+        "customer_id": "C002",
+        "amount": 750,
+        "timestamp": "2026-08-24 14:02:00"
+    },
+    {
+        "transaction_id": "T003",
+        "customer_id": "C003",
+        "amount": -200,
+        "timestamp": "24/08/2026"
+    },
+    {
+        "transaction_id": "T003",
+        "customer_id": "C003",
+        "amount": -200,
+        "timestamp": "24/08/2026"
+    },
+    {
+        "transaction_id": "T004",
+        "customer_id": "C004",
+        "amount": 1200,
+        "timestamp": "2026-08-24 14:05:00"
+    }
+]

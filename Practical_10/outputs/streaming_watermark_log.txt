@@ -1,0 +1,4 @@
+=== PySpark Structured Streaming Watermark Progress Log ===
+
+Batch #0: Input Rows = 51, Watermark = 1970-01-01T00:00:00.000Z, Max Event Time = 2026-03-01T12:34:09.000Z
+Batch #1: Input Rows = 0, Watermark = 2026-03-01T12:24:09.000Z, Max Event Time = None
